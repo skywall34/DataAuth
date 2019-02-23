@@ -1,0 +1,25 @@
+{
+  "name": "data_auth",
+  "version": "1.0.0",
+  "description": "data authorization through smart contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skywall34/DataAuth.git"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "database",
+    "authorization"
+  ],
+  "author": "Mike Shin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skywall34/DataAuth/issues"
+  },
+  "homepage": "https://github.com/skywall34/DataAuth#readme"
+}
