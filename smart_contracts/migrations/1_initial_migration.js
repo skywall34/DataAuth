@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("./Migrations.sol");
+var DataAuth = artifacts.require("./DataAuth.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(DataAuth);
 };
