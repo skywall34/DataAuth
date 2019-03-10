@@ -64,4 +64,4 @@ typings/
 ./smart_contracts/build/
 
 # server stats
-backend/server.js
+./backend/server.js
