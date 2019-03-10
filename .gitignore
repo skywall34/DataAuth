@@ -62,3 +62,6 @@ typings/
 
 #truffle builds
 ./smart_contracts/build/
+
+# server stats
+backend/server.js

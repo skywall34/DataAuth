@@ -4,6 +4,8 @@
   "description": "data authorization through smart contracts",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js &",
+    "start-watch": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/skywall34/DataAuth/issues"
   },
-  "homepage": "https://github.com/skywall34/DataAuth#readme"
+  "homepage": "https://github.com/skywall34/DataAuth#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.10",
+    "path": "^0.12.7"
+  }
 }
