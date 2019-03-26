@@ -1,20 +1,17 @@
-let express = require('express');
-let app = express();
-let path = require('path');
-let mysql = require('mysql');
-let connection = require('./server.js');
-let user_controller = require('./controller/user_controllers');
+import express from 'express';
+import path from 'path';
+import mysql from 'mysql';
+import connection from './server.js';
+import User from './controllers/user_controllers';
 
-connection.connect(function(err) {
+connection.connect((err) => {
     if (err) throw err;
-		else{
-			console.log("MySQL Connection Successful!")
-		}
+    console.log("MySQL Connection Successful!");
 });
 
+let app = express();
 
-app.use(user_controller);
-
+app.use('/user', User);
 
 const PORT = process.env.PORT || 3000 ;
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));
