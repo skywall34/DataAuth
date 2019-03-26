@@ -25,9 +25,16 @@
   },
   "homepage": "https://github.com/skywall34/DataAuth#readme",
   "dependencies": {
+    "@babel/runtime": "^7.4.2",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
   }
 }
