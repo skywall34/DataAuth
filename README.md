@@ -1,6 +1,13 @@
 # DataAuth
 data authorization through the ethereum blockchain
 
+# Running the project
+
+We are utilizing nodemon to watch the `src` directory and recompile the entire
+directory on any change. To run the project and enable file watching:
+
+`npm run dstart` - with 'd' meaning development
+
 # Structure of the MemSQL tables
 
 Database: dapp

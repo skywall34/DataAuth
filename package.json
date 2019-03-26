@@ -4,8 +4,9 @@
   "description": "data authorization through smart contracts",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js &",
-    "start-watch": "nodemon src/index.js",
+    "build": "babel src -d build",
+    "dstart": "nodemon --watch src --exec 'npm run start'",
+    "start": "npm run build && node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,9 +26,16 @@
   },
   "homepage": "https://github.com/skywall34/DataAuth#readme",
   "dependencies": {
+    "@babel/runtime": "^7.4.2",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
   }
 }

@@ -1,5 +1,4 @@
-let express = require('express');
-let sql = require('../server');
+import sql from '../server';
 
 //Create a constructor for each table
 
