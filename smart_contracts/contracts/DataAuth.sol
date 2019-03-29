@@ -10,7 +10,7 @@ contract DataAuth is Ownable{
 
 
     struct User {
-        address userPubKey;
+        address userAddress;
         string username;
         string group;
         uint32[] databaseList;
@@ -29,6 +29,7 @@ contract DataAuth is Ownable{
     NOTE: This call is done by the administrator
 
     params:
+    _userAddress: the public address of the user
     _username: name of user to add to database
     _group: group associated with user (group association done off-chain)
     _databaseList: list of databases the user wants to have access to
@@ -37,10 +38,11 @@ contract DataAuth is Ownable{
     lockId: abi.encode(sha256) hash of the parameters
    */
 
-    function createUser(address _userPubKey, string memory _username, string memory _group, uint32[] memory _databaseList) public onlyOwner returns (bytes32 lockId){
+    function createUser(address _userAddress, string memory _username, string memory _group, uint32[] memory _databaseList) public onlyOwner returns (bytes32 lockId){
 
-        lockId = sha256(abi.encodePacked(
-            _userPubKey,
+      //owner need to check for duplicates
+        lockId = sha256(abi.encode(
+            _userAddress,
             _username,
             _group,
             _databaseList
@@ -53,7 +55,7 @@ contract DataAuth is Ownable{
         }
 
         users[lockId] = User(
-            _userPubKey,
+            _userAddress,
             _username,
             _group,
             _databaseList
@@ -77,14 +79,13 @@ contract DataAuth is Ownable{
      - group: group association
      - databaseList: authorized database list (specified in numbers)
     */
-
-    function getUser(bytes32 _lockId) public view returns (address requester, address userPubKey ,string memory username, string memory group, uint32[] memory databaseList){
+    function getUser(bytes32 _lockId) public view returns (address requester, address userAddress ,string memory username, string memory group, uint32[] memory databaseList){
         if (owns_user(_lockId) == false)
           revert("lock Id does not match");
         User storage c = users[_lockId];
         return (
             msg.sender,
-            c.userPubKey,
+            c.userAddress,
             c.username,
             c.group,
             c.databaseList
@@ -159,8 +160,8 @@ contract DataAuth is Ownable{
         parmas: _lockId: Id into contracts mapping.
         returns: boolean, true if success
     */
-    function owns_user(bytes32 _lockId) internal view returns (bool exists){
-        exists = (users[_lockId].userPubKey != address(0));
+    function owns_user(bytes32 _lockId) public view returns (bool exists){
+        exists = (users[_lockId].userAddress != address(0));
     }
 
 
