@@ -46,11 +46,9 @@ without using conventional methods (e.g. passwords), can we use ethereum to auth
 - Remix IDE
 
 
-# Notes (25th Feb, 2019)
+# Notes (29th March, 2019)
 
-- DataAuth contract implemented, initial build successful
-- String comparison requires keccak256 and abi.encodePacked
-- Strings now need to be specified as memory in parameters with the update of 0.5.0 and above compilers
+- createUser: mapping does not handle duplicates if there is a lockId creation. The duplicate handling should be done client-side. The owner checks for duplicates then calls the createUser function
 - Deleting a user still leaves a gap TODO: find a way to change the length of the gap to match the deleted index (need to get the index)
 
 ## Functions (CRUD)

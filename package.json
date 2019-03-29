@@ -27,7 +27,9 @@
   "homepage": "https://github.com/skywall34/DataAuth#readme",
   "dependencies": {
     "@babel/runtime": "^7.4.2",
+    "ethereumjs-abi": "^0.6.7",
     "express": "^4.16.4",
+    "js-sha256": "^0.9.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
     "path": "^0.12.7"
