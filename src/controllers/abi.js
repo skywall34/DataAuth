@@ -1,4 +1,4 @@
-{
+let abi = {
   "contractName": "DataAuth",
   "abi": [
     {
@@ -6530,22 +6530,10 @@
       "links": {},
       "address": "0xDe2A088a13A260560a8ee8863033E6f4A39C1843",
       "transactionHash": "0xc655850b2de98ba279e62fa7dfe2295bc120d3013213da6faa3f03cbdf7337a8"
-    },
-    "1554146076110": {
-      "events": {},
-      "links": {},
-      "address": "0x2aE326A12c8Ac1a553F3f411b42173E18002f6Ab",
-      "transactionHash": "0x6db46fe443981fcd749eb9be55b527a15014d221d6e6c7db4db6ca495b298934"
-    },
-    "1554150388611": {
-      "events": {},
-      "links": {},
-      "address": "0x48d99AeF55c1e7e940E420Da674e17696c93089E",
-      "transactionHash": "0x67b7198f874d95f5751a8494fe4fe5d03387c12402cd318e64c3a67a4e64b04d"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-04-01T20:27:05.586Z",
+  "updatedAt": "2019-03-30T23:52:41.649Z",
   "devdoc": {
     "methods": {
       "isOwner()": {
@@ -6573,3 +6561,5 @@
     }
   }
 }
+
+export default abi;

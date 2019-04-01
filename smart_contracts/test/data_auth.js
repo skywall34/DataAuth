@@ -34,7 +34,7 @@ contract("DataAuth", async accounts => {
   it("should call a function that returns the created User", async () => {
     let instance = await DataAuth.deployed();
     let lockId = await instance.createUser.call(userAddress, "testUser3", "group2", [1,2,3]);
-    console.log(lockId);
+    console.log("getUser lockId:" + lockId);
     let [sender, callUserAddress, callUsername, callUserGroup, callDatabaseList] = await instance.getUser.call(lockId);
     assert.equal(accounts[0], sender); //assuming that we're using the same account to make this call, not good practice
     assert.equal(userAddress, callUserAddress);
@@ -46,10 +46,10 @@ contract("DataAuth", async accounts => {
   it("should edit the user correctly", async () => {
     let instance = await DataAuth.deployed();
     let lockId = await instance.createUser.call(userAddress, "testUser4", "group3", [1,2]);
-    console.log(lockId);
+    console.log("editUser lockId:" + lockId);
     let result = await instance.editUser.call(lockId, "testUser5", "group3", [1,2,3]);
     assert.equal(result, true);
   });
 
-  //TODO: Delete test code
+  //TODO: deleteUser test code
 });

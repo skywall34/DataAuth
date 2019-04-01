@@ -1,7 +1,7 @@
 import express from 'express';
 import UserModel from '../models/user_model.js';
 
-var router = express.Router();
+const router = express.Router();
 
 //Get the models
 let User = UserModel.User;

@@ -79,9 +79,8 @@ contract DataAuth is Ownable{
      - group: group association
      - databaseList: authorized database list (specified in numbers)
     */
-    function getUser(bytes32 _lockId) public view returns (address requester, address userAddress ,string memory username, string memory group, uint32[] memory databaseList){
-        if (owns_user(_lockId) == false)
-          revert("lock Id does not match");
+    function getUser(bytes32 _lockId) public user_exists(_lockId) view returns (address requester, address userAddress ,string memory username, string memory group, uint32[] memory databaseList){
+
         User storage c = users[_lockId];
         return (
             msg.sender,
@@ -109,8 +108,6 @@ contract DataAuth is Ownable{
      */
     function editUser(bytes32 _lockId, string memory _username, string memory _group, uint32[] memory _databaseList) public user_exists(_lockId) onlyOwner returns (bool){
 
-        if (owns_user(_lockId) == false)
-            revert("lock Id does not match");
 
         User storage c = users[_lockId];
 
@@ -144,9 +141,6 @@ contract DataAuth is Ownable{
        boolean: true if success
       */
     function deleteUser(bytes32 _lockId) public user_exists(_lockId) onlyOwner returns (bool) {
-
-        if (owns_user(_lockId) == false)
-            revert("lock Id does not match");
 
         //for now haven't found a way to resize and find index of the array
         delete users[_lockId];

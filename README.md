@@ -44,12 +44,24 @@ without using conventional methods (e.g. passwords), can we use ethereum to auth
 # Development environment
 - Truffle, Ganache (POW) local dev
 - Remix IDE
+- NOTE: To be compatible with ethers, ganache-cli needs to be version 6.1.8 (https://github.com/ethers-io/ethers.js/issues/275)
+  - npm install -g ganache-cli@6.1.8
+- NOTE: branch seems to have a security flaw, need to audit and upgrade to ^2.3.1 (TODO)
 
 
 # Notes (29th March, 2019)
 
 - createUser: mapping does not handle duplicates if there is a lockId creation. The duplicate handling should be done client-side. The owner checks for duplicates then calls the createUser function
 - Deleting a user still leaves a gap TODO: find a way to change the length of the gap to match the deleted index (need to get the index)
+- Integration of etherjs and controller code to index Successful
+- TODO: Integration of all functions and additional client code
+- Exports
+  - MYSQL_DB_USER
+  - MYSQL_DB_PW
+  - PRIVATE_KEY_OWNER -> This will be moved to client
+- Add-ons
+  - Contract Address
+- TODO: Scripting exports and add-ons for easier testing and dev
 
 ## Functions (CRUD)
 
@@ -58,3 +70,4 @@ without using conventional methods (e.g. passwords), can we use ethereum to auth
 2. getUser
 3. editUser
 4. deleteUser
+5. owns_user: check to see if user owns the lockId address
