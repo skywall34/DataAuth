@@ -62,6 +62,8 @@ contract DataAuth is Ownable{
         );
 
         emit NewUser(lockId);
+
+        return (lockId);
     }
 
     /*
