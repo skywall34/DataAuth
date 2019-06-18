@@ -49,19 +49,24 @@ without using conventional methods (e.g. passwords), can we use ethereum to auth
 - NOTE: branch seems to have a security flaw, need to audit and upgrade to ^2.3.1 (TODO)
 
 
-# Notes (29th March, 2019)
+# Notes (18th June, 2019)
+
+**CRUD functions completed**
+
+**Postman Tests Successful**
 
 - createUser: mapping does not handle duplicates if there is a lockId creation. The duplicate handling should be done client-side. The owner checks for duplicates then calls the createUser function
 - Deleting a user still leaves a gap TODO: find a way to change the length of the gap to match the deleted index (need to get the index)
 - Integration of etherjs and controller code to index Successful
-- TODO: Integration of all functions and additional client code
 - Exports
   - MYSQL_DB_USER
   - MYSQL_DB_PW
   - PRIVATE_KEY_OWNER -> This will be moved to client
 - Add-ons
   - Contract Address
-- TODO: Scripting exports and add-ons for easier testing and dev
+- TODO: Finish Tests
+
+
 
 ## Functions (CRUD)
 

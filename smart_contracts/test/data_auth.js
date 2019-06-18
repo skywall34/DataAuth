@@ -15,7 +15,7 @@ contract("DataAuth", async accounts => {
   it("should create a new User", async () => { //only the owner can do this
     //TODO: create handler for checking if account is owner, though this is already implemented in the SC
     let instance = await DataAuth.deployed();
-    let lockId = await instance.createUser.call(userAddress, "testUser1", "group1", [1,2]);
+    let lockId = await instance.createUser(userAddress, "testUser1", "group1", [1,2]);
 
     //console.log("LockId from contract" + lockId);
     //console.log("Test LockId" + testLockId);
@@ -24,18 +24,18 @@ contract("DataAuth", async accounts => {
 
   it("should validate the User", async () => {
     let instance = await DataAuth.deployed();
-    let lockId = await instance.createUser.call(userAddress, "testUser2", "group2", [1,2]);
+    let lockId = await instance.createUser(userAddress, "testUser2", "group2", [1,2]);
     console.log("owns_user lockId: " + lockId);
-    let boolResult = await instance.owns_user.call(lockId);
+    let boolResult = await instance.owns_user(lockId);
     assert.equal(true. boolResult);
   });
 
   //TODO: FIX Bugs
   it("should call a function that returns the created User", async () => {
     let instance = await DataAuth.deployed();
-    let lockId = await instance.createUser.call(userAddress, "testUser3", "group2", [1,2,3]);
+    let lockId = await instance.createUser(userAddress, "testUser3", "group2", [1,2,3]);
     console.log("getUser lockId:" + lockId);
-    let [sender, callUserAddress, callUsername, callUserGroup, callDatabaseList] = await instance.getUser.call(lockId);
+    let [sender, callUserAddress, callUsername, callUserGroup, callDatabaseList] = await instance.getUser(lockId);
     assert.equal(accounts[0], sender); //assuming that we're using the same account to make this call, not good practice
     assert.equal(userAddress, callUserAddress);
     assert.equal(username, callUsername);
@@ -45,9 +45,9 @@ contract("DataAuth", async accounts => {
 
   it("should edit the user correctly", async () => {
     let instance = await DataAuth.deployed();
-    let lockId = await instance.createUser.call(userAddress, "testUser4", "group3", [1,2]);
+    let lockId = await instance.createUser(userAddress, "testUser4", "group3", [1,2]);
     console.log("editUser lockId:" + lockId);
-    let result = await instance.editUser.call(lockId, "testUser5", "group3", [1,2,3]);
+    let result = await instance.editUser(lockId, "testUser5", "group3", [1,2,3]);
     assert.equal(result, true);
   });
 

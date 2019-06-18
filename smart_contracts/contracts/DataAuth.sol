@@ -8,6 +8,14 @@ contract DataAuth is Ownable{
         bytes32 indexed lockId
     );
 
+    event UserEdited(
+        bool result
+    );
+
+    event UserDeleted(
+        bool result
+    );
+
 
     struct User {
         address userAddress;
@@ -126,7 +134,9 @@ contract DataAuth is Ownable{
             c.databaseList = _databaseList;
         }
 
-        return true;
+        emit UserEdited(true);
+
+        return (true);
 
     }
 
@@ -147,7 +157,9 @@ contract DataAuth is Ownable{
         //for now haven't found a way to resize and find index of the array
         delete users[_lockId];
 
-        return true;
+        emit UserDeleted(true);
+
+        return (true);
     }
 
 

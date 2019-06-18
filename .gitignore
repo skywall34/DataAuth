@@ -68,5 +68,5 @@ typings/
 ./smart_contracts/build/
 
 # server stats
-./src/server.js
-./src/env_setup.sh
+/src/server.js
+/src/env_setup.sh

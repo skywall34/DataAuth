@@ -16,7 +16,7 @@ for (let envVar of envVars) {
 }
 
 let abi = ABI.abi;
-let contract_address = "0x3decd43dc8639c5eed3e756f34b5d21e84d336b1";
+let contract_address = "";
 //ether params  (we could do this outside later)
 let url = "http://localhost:8545";//7545 if running ganache-cli as an application, running ganache-cli on command line is 8545
 let custom_provider = new ethers.providers.JsonRpcProvider(url);
@@ -31,16 +31,10 @@ console.log(contract.address);
 async function testContract (address, username, group, database_list){
   try{
     let result = await contract.createUser(address, username, group, database_list);
-    //console.log("result: " + result.wait);
-    //let keys = Object.keys(result);
-    //console.log(keys);
-    //return result;
-    console.log(result.hash);
 
-    // The operation is NOT complete yet; we must wait until it is mined
-    await result.wait();
     console.log(result);
-    return result;
+
+    return result; //returns the hash of the transaction
   } catch(err){
     console.log(err);
   }
@@ -49,11 +43,12 @@ async function testContract (address, username, group, database_list){
 console.log(wallet.address);
 //test network
 
+//test for Create User
 if (typeof contract === undefined){
   console.log("Error connecting to ethereum");
 } else {
   try {
-    let r = testContract(wallet.address, "Shin","33",[1]);
+    let r = testContract(wallet.address, "John","33",[1]);
   } catch (err){
     console.log(err);
   }
